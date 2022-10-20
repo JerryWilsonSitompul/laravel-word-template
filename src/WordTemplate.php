@@ -23,8 +23,10 @@ class WordTemplate
             $dokumen = str_replace($key, $value, $dokumen);
         }
         
-        header("Content-type: application/msword");
-        header("Content-disposition: inline; filename={$filename}");
+        // header("Content-type: application/msword");
+        header('Content-Type: application/octet-stream');
+        // header("Content-disposition: inline; filename={$filename}");
+        header("Content-Disposition: attachment; filename={$filename}");
         header("Content-length: ".strlen($dokumen));
         
         echo $dokumen;
